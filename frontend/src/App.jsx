@@ -13,7 +13,17 @@ function App() {
   return 1 + 1
 }`)
 
-  const [review, setReview] = useState('')
+const [review, setReview] = useState(`
+  ## 🚀 Welcome to the Code Review System  
+  &nbsp;
+  
+  Hello, I'm **Anvesh Shetty**. This project is built to help developers analyze and improve their code quality effortlessly. It supports multiple programming languages, provides syntax highlighting, and delivers AI-generated feedback to enhance your code.  
+  
+  Click the **"Review"** button to get started and receive instant insights!  
+  `);
+  
+
+  
   const [isLoading, setIsLoading] = useState(false) 
   useEffect(() => {
     prism.highlightAll()
