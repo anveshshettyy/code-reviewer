@@ -4,14 +4,18 @@ const express = require("express");
 
 const app = require("./src/app");
 
-// Serve Frontend (React Build)
-const frontendPath = path.join(__dirname, "frontend", "dist");
-
-app.use(express.static(frontendPath));
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, "./frontend/dist")));  
+
+
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, "./frontend/dist", "index.html"));
+  });
+}
 
 // Start Server
 const PORT = process.env.PORT || 3000;
